@@ -80,7 +80,7 @@ Open the created Azure Function and add new trigger:
 - Hubname: degault
 - SignalR Service connection: reuse the previous connection name
 Integration changes
-- change the input type from 'signalRConnectionInfo' to 'signalR'
+- change the input type from `signalRConnectionInfo` to `signalR` (best do it in function.json)
 
 function code
 ```C#
@@ -157,9 +157,9 @@ Configuration of AD B2C is not included in this document
 # 8. Active Directory B2C application registration
 Go to your Azure B2C tenant and register the url of the azure function application:
 - Supported account types: Accounts in any organizational directory or any identity provider. For authenticating users with Azure AD B2C
-- Redirect URI: https://[youfuncapp].azurewebsites.net/.auth/login/aad/callback
+- Redirect URI: `https://[youfuncapp].azurewebsites.net/.auth/login/aad/callback`
 - Permissions
-- - Grant admin consent to openid and offline_access permissions: Yes
+  - Grant admin consent to openid and offline_access permissions: Yes
 Remark: get the 'ClientId'
 
 # 8. Enable Authentication
@@ -167,10 +167,10 @@ Go to your Azure Function App / Platform reatures and open 'Authentication / Aut
 - App Service Authentication: ON
 - Action to take when request is not authenticated: Log in with Azure Active Directory
 - Authentication Providers:
-- - Azure Active Directory Settings
-- - - Management mode: Advanced
-- - - Client ID: [your application registration id from B2C]
-- - - Issuer Url: https://[youb2cname].b2clogin.com/[youb2cname].onmicrosoft.com/v2.0/.well-known/openid-configuration?p=[youb2c]]
+  - Azure Active Directory Settings
+    - Management mode: Advanced
+    - Client ID: `[your application registration id from B2C]`
+    - Issuer Url: `https://[youb2cname].b2clogin.com/[youb2cname].onmicrosoft.com/v2.0/.well-known/openid-configuration?p=[youb2c]]`
 - Advanced Settings
-- - Token Store: On
-- - Allowed External Redirect URLs: [your static web app url in storage account]
+  - Token Store: On
+  - Allowed External Redirect URLs: `[your static web app url in storage account]`
